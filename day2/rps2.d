@@ -18,23 +18,21 @@ import std.array;
 
 long score( char[] round )
 {
-  long pts = 0;
   switch ( round )
   {
-    case [ 'A', 'X' ] : pts = 1 + 3; break;
-    case [ 'A', 'Y' ] : pts = 2 + 6; break;
-    case [ 'A', 'Z' ] : pts = 3 + 0; break;
+    case [ 'A', 'X' ] : return 1 + 3;
+    case [ 'A', 'Y' ] : return 2 + 6;
+    case [ 'A', 'Z' ] : return 3 + 0;
 
-    case [ 'B', 'X' ] : pts = 1 + 0; break;
-    case [ 'B', 'Y' ] : pts = 2 + 3; break;
-    case [ 'B', 'Z' ] : pts = 3 + 6; break;
+    case [ 'B', 'X' ] : return 1 + 0;
+    case [ 'B', 'Y' ] : return 2 + 3;
+    case [ 'B', 'Z' ] : return 3 + 6;
 
-    case [ 'C', 'X' ] : pts = 1 + 6; break;
-    case [ 'C', 'Y' ] : pts = 2 + 0; break;
-    case [ 'C', 'Z' ] : pts = 3 + 3; break;
+    case [ 'C', 'X' ] : return 1 + 6;
+    case [ 'C', 'Y' ] : return 2 + 0;
+    case [ 'C', 'Z' ] : return 3 + 3;
     default: assert(0);
   }
-  return pts;
 }
 
 // A is rock         X lose
