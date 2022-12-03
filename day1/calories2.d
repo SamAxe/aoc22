@@ -1,10 +1,11 @@
-// dmd -run calories.d input
+// dmd -run calories2.d input
 
 import std.stdio;
 import std.file;
 import std.array;
 import std.conv : to;
 import std.algorithm;
+import std.range;
 
 void main( string[] args )
 {
@@ -21,12 +22,13 @@ void main( string[] args )
     {
       amounts ~= sum;
       sum = 0;
-      continue;
     }
-    sum += line.to!long;
+    else
+      sum += line.to!long;
   }
   amounts ~= sum;
 
-  writefln( "Max element (0 based) is at %s with %s", amounts.maxIndex, amounts.maxElement );
-  writefln( "%s elves", amounts.length );
+  auto sorted   = amounts.sort;
+  auto topThree = sorted.retro.take(3).sum;
+  writefln( "top three total snacks is: %s ", topThree );
 }
