@@ -1,4 +1,4 @@
-// dmd -run rps.d input
+// dmd -run rps2.d input
 
 import std.stdio;
 import std.file;
@@ -7,16 +7,10 @@ import std.range;
 import std.array;
 
 
-// Opponent          We choose
-// ------------------------------
-// A is rock         Y is paper
-// B is paper        X is rock
-// C is scissors     Z is scissors
-
 // points for shape
-//                   X = 1 
-//                   Y = 2
-//                   Z = 3
+//  X = 1 
+//  Y = 2
+//  Z = 3
 // points for game
 //  lose 0
 //  tie  3
@@ -43,6 +37,36 @@ long score( char[] round )
   return pts;
 }
 
+// A is rock         X lose
+// B is paper        Y tie
+// C is scissors     Z win
+
+
+// X is rock
+// Y is paper
+// Z is scissors
+
+char[] choose( char[] round )
+{
+  char pick;
+  switch ( round )
+  {
+    case [ 'A', 'X' ] :  return [ 'A', 'Z' ] ;
+    case [ 'A', 'Y' ] :  return [ 'A', 'X' ] ;
+    case [ 'A', 'Z' ] :  return [ 'A', 'Y' ] ;
+
+    case [ 'B', 'X' ] :  return [ 'B', 'X' ] ;
+    case [ 'B', 'Y' ] :  return [ 'B', 'Y' ] ;
+    case [ 'B', 'Z' ] :  return [ 'B', 'Z' ] ;
+
+    case [ 'C', 'X' ] :  return [ 'C', 'Y' ] ;
+    case [ 'C', 'Y' ] :  return [ 'C', 'Z' ] ;
+    case [ 'C', 'Z' ] :  return [ 'C', 'X' ] ;
+    default: assert(0);
+  }
+}
+
+
 
 int main( string[] args )
 {
@@ -58,7 +82,7 @@ int main( string[] args )
     auto choices = line.split;
     assert( choices.length == 2 );
 
-    auto s = score ( [ choices[0][0], choices[1][0] ] );
+    auto s = [ choices[0][0], choices[1][0] ].choose.score (  );
     total += s;
   }
 
