@@ -29,22 +29,7 @@ string[] crates =
 // [Q] [D] [P] [L] [V] [D] [D] [C] [Z]
 //  1   2   3   4   5   6   7   8   9 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   //move 1 from 9 to 2
-
-
 
   auto file = File( args[1] );
   auto lines = file.byLine;
